@@ -1,0 +1,55 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>通知リスト</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= for notification <- @notifications_sent_not_yet do %>
+    <tr>
+        <td><%= notification.subject %></td>
+        <td class="text-right">
+            <%= link "編集", to: notify_path(@conn, :edit, notification), class: "btn btn-default btn-xs" %>
+            <%= link "削除", to: notify_path(@conn, :delete, notification), method: :delete, data: [confirm: "削除してもいいですか?"], class: "btn btn-danger btn-xs" %>
+        </td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<%= form_for @changeset, notify_path(@conn, :create), fn form -> %>
+<%= if @changeset.action do %>
+<div class="alert alert-danger">
+    <p>入力に誤りがあります</p>
+</div>
+<% end %>
+
+<%= render "form.html", changeset: @changeset, form: form %>
+
+<div class="button-group">
+    <%= submit "登録", class: "btn btn-primary create" %>
+</div>
+
+<% end %>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>通知済リスト</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= for notification <- @notifications_sent do %>
+    <tr>
+        <td><%= notification.subject %></td>
+        <td class="text-right">
+            <%= link "編集", to: notify_path(@conn, :edit, notification), class: "btn btn-default btn-xs" %>
+            <%= link "削除", to: notify_path(@conn, :delete, notification), method: :delete, data: [confirm: "削除してもいいですか?"], class: "btn btn-danger btn-xs" %>
+        </td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>
+

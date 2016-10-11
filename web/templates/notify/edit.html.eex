@@ -1,0 +1,18 @@
+<%= form_for @changeset, notify_path(@conn, :update, @notification), fn form -> %>
+<%= if @changeset.action do %>
+<div class="alert alert-danger">
+    <p>入力に誤りがあります</p>
+</div>
+<% end %>
+
+<%= render "form.html", changeset: @changeset, form: form %>
+
+<div class="button-group">
+    <%= submit "更新", class: "btn btn-primary update", id: "update_btn" %>
+    <%= submit "削除", class: "btn delete", id: "delete_btn" %>
+</div>
+
+<% end %>
+
+<%= link "HOME", to: notify_path(@conn, :index) %>
+
