@@ -18,7 +18,7 @@ defmodule Notify.NotifyController do
 
     case Repo.insert(changeset) do
       {:ok, notification} ->
-        notify_date_time = get_notify_date_time(notification)
+        notify_date_time = calc_notify_date_time(notification)
         notification
         |> Ecto.Changeset.change(%{notify_date_time: notify_date_time})
         |> Repo.update!
@@ -51,7 +51,7 @@ defmodule Notify.NotifyController do
 
     case Repo.update(changeset) do
       {:ok, notification} ->
-        notify_date_time = get_notify_date_time(notification)
+        notify_date_time = calc_notify_date_time(notification)
         notification
         |> Ecto.Changeset.change(%{notify_date_time: notify_date_time, sent: false})
         |> Repo.update!
@@ -93,7 +93,7 @@ defmodule Notify.NotifyController do
     |> Repo.all
   end
 
-  defp get_notify_date_time(notification) do
+  defp calc_notify_date_time(notification) do
     Ecto.DateTime.from_date_and_time(notification.action_date, notification.action_time)
     |> add_minutes(-(notification.notify_before))
   end
