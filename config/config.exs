@@ -8,8 +8,8 @@ use Mix.Config
 # General application configuration
 config :notify,
   ecto_repos: [Notify.Repo],
-  mail_from: "NOTIFY SENDER <notify@xxxx.xx>",
-  mail_to: "to@xxxx.xx"
+  mail_from: "NOTIFY SENDER <from@xxxxxx.xxx>",
+  mail_to: "to@xxxxxx.xxx"
 
 # Configures the endpoint
 config :notify, Notify.Endpoint,
