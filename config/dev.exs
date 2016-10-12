@@ -42,10 +42,9 @@ config :notify, Notify.Repo,
   hostname: "localhost",
   pool_size: 10
 
-# In your config/config.exs file
 config :notify, Notify.Mailer,
   adapter: Bamboo.SMTPAdapter,
-  server: "smtp.xxxx.xx",
+  server: "localhost",
   port: 25,
   username: "",
   password: "",
