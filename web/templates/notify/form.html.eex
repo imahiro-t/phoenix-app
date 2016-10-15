@@ -5,25 +5,25 @@ notify_before_options =
 %>
 <div class="form-group">
     <%= label @form, :subject, "件名", class: "control-label" %>
-    <%= text_input @form, :subject, class: "form-control" %>
+    <%= text_input @form, :subject, class: "form-control", required: "" %>
     <%= error_tag @form, :subject %>
 </div>
 
 <div class="form-group">
     <%= label @form, :action_date, "日付", class: "control-label" %>
-    <%= date_input @form, :action_date, class: "form-control" %>
+    <%= date_input @form, :action_date, class: "form-control", required: "" %>
     <%= error_tag @form, :action_date %>
 </div>
 
 <div class="form-group">
     <%= label @form, :action_time, "時間", class: "control-label" %>
-    <%= time_input @form, :action_time, class: "form-control" %>
+    <%= time_input @form, :action_time, class: "form-control", required: "" %>
     <%= error_tag @form, :action_time %>
 </div>
 
 <div class="form-group">
     <%= label @form, :notify_before, "通知", class: "control-label" %>
-    <%= select @form, :notify_before, notify_before_options, class: "form-control" %>
+    <%= select @form, :notify_before, notify_before_options, class: "form-control", required: "" %>
     <%= error_tag @form, :notify_before %>
 </div>
 
